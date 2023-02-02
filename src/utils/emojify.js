@@ -15,4 +15,5 @@ const degens = {
   '7NYZSi7PtWM6QP7p6kzYsN92gxNjikApsvstz6H9y8tjbVrZ': '<:thuglife:989554541357834261>',
   '7Ljigfve9PdRqvSjiRGUjVf37rbX3n89ZmaitD2hQQhtLBMN': '<:heimdall:1005035405864869939>',
   '7KZST3yphBsPdRCjUNjP1yTx8RNJaiecHsRyYTgaGHdpG1ZJ': '<:kraken:1068218238074376193>',
+  '7HcZDdrcvbjL8CeqK7J8oypnBMCfrHPTcpH6QvM2xXbRDyZt': '<:squirtle:1064486525372477500>', 
 };
