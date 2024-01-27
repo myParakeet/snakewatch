@@ -11,7 +11,8 @@ const referralPot = '7L53bUTCCAvmCxhe15maHwJZbjQYH89LkXuyTnTi1J58xyFC';
 
 export const notByReferralPot = ({event: {data: {who}}}) => who.toString() !== referralPot;
 
-const window = 150;
+// Define different windows
+const windows = [150, 7200, 50400];
 let accrued = 0;
 let since = null;
 
@@ -20,18 +21,21 @@ async function transferHandler({event: {data: {amount}}, blockNumber})  {
     since = blockNumber;
   }
   accrued += Number(amount);
-  if (blockNumber - since > window) {
-    report();
-    accrued = 0;
-    since = blockNumber;
-  }
+  // Check for each window and report accordingly
+  windows.forEach(window => {
+    if (blockNumber - since > window) {
+      report(window);
+      accrued = 0;
+      since = blockNumber;
+    }
+  });
 }
 
 function report() {
   if (accrued > 0) {
     const amount = {amount: accrued, currencyId: 0};
     const value = usdValue(amount);
-    const message = `💸 **${formatAmount(amount)}**${formatUsdValue(value)} bought for rewards`;
+    const message = `💸 **${formatAmount(amount)}**${formatUsdValue(value)} bought for rewards (Window: ${window} blocks)`;
     broadcast(message);
   }
 }
