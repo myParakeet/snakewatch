@@ -27,7 +27,7 @@ async function transferHandler({event: {data: {amount}}, blockNumber})  {
   }
 }
 
-function report() {
+function report(window) {
   if (accrued > 0) {
     const amount = {amount: accrued, currencyId: 0};
     const value = usdValue(amount);
